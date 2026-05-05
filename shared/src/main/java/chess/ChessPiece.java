@@ -74,6 +74,7 @@ public class ChessPiece {
                 new RookMoveCalc(myPosition, board, legalMoves).moveStraight();
                 break;
             case PAWN:
+                new PawnMoveCalc(myPosition, board, legalMoves).movePawn();
                 break;
             case null, default:
                 break;
