@@ -60,34 +60,52 @@ public class PawnMoveCalc extends MoveCalc {
      */
 
     private void takeWhite() {
-        ChessPiece otherL = board.getPiece(new ChessPosition(startPosition.getRow() + 1,
-                startPosition.getColumn() - 1));
-        if (otherL != null && otherL.getTeamColor() != myColor && startPosition.getRow() + 1 < 8 &&
-                startPosition.getColumn() - 1 > 0) {
+        ChessPiece otherL;
+        if (startPosition.getRow() + 1 < 8 && startPosition.getColumn() - 1 > 0) {
+            otherL = board.getPiece(new ChessPosition(startPosition.getRow() + 1,
+                    startPosition.getColumn() - 1));
+        } else {
+            otherL = null;
+        }
+        if (otherL != null && otherL.getTeamColor() != myColor) {
             legalMoves.add(new ChessMove(startPosition, new ChessPosition(startPosition.getRow() + 1,
                     startPosition.getColumn() - 1), null));
         }
-        ChessPiece otherR = board.getPiece(new ChessPosition(startPosition.getRow() + 1,
-                startPosition.getColumn() + 1));
-        if (otherR != null && otherR.getTeamColor() != myColor && startPosition.getRow() + 1 < 8 &&
-                startPosition.getColumn() + 1 <= 8) {
+
+        ChessPiece otherR;
+        if (startPosition.getRow() + 1 < 8 && startPosition.getColumn() + 1 <= 8) {
+            otherR = board.getPiece(new ChessPosition(startPosition.getRow() + 1,
+                    startPosition.getColumn() + 1));
+        } else {
+            otherR = null;
+        }
+        if (otherR != null && otherR.getTeamColor() != myColor) {
             legalMoves.add(new ChessMove(startPosition, new ChessPosition(startPosition.getRow() + 1,
                     startPosition.getColumn() + 1), null));
         }
     }
 
     private void takeBlack() {
-        ChessPiece otherL = board.getPiece(new ChessPosition(startPosition.getRow() - 1,
-                startPosition.getColumn() - 1));
-        if (otherL != null && otherL.getTeamColor() != myColor && startPosition.getRow() - 1 > 1 &&
-                startPosition.getColumn() - 1 > 0) {
+        ChessPiece otherL;
+        if (startPosition.getRow() - 1 > 1 && startPosition.getColumn() - 1 > 0) {
+            otherL = board.getPiece(new ChessPosition(startPosition.getRow() - 1,
+                    startPosition.getColumn() - 1));
+        } else {
+            otherL = null;
+        }
+        if (otherL != null && otherL.getTeamColor() != myColor) {
             legalMoves.add(new ChessMove(startPosition, new ChessPosition(startPosition.getRow() - 1,
                     startPosition.getColumn() - 1), null));
         }
-        ChessPiece otherR = board.getPiece(new ChessPosition(startPosition.getRow() - 1,
-                startPosition.getColumn() + 1));
-        if (otherR != null && otherR.getTeamColor() != myColor && startPosition.getRow() - 1 > 1 &&
-                startPosition.getColumn() + 1 <= 8) {
+
+        ChessPiece otherR;
+        if (startPosition.getRow() - 1 > 1 && startPosition.getColumn() + 1 <= 8) {
+            otherR = board.getPiece(new ChessPosition(startPosition.getRow() - 1,
+                    startPosition.getColumn() + 1));
+        } else {
+            otherR = null;
+        }
+        if (otherR != null && otherR.getTeamColor() != myColor) {
             legalMoves.add(new ChessMove(startPosition, new ChessPosition(startPosition.getRow() - 1,
                     startPosition.getColumn() + 1), null));
         }
@@ -167,5 +185,11 @@ public class PawnMoveCalc extends MoveCalc {
             legalMoves.add(new ChessMove(startPosition, new ChessPosition(startPosition.getRow() - 1,
                     startPosition.getColumn() - 1), ChessPiece.PieceType.KNIGHT));
         }
+    }
+
+    @Override
+    public boolean notBlocked(ChessPosition endPosition) {
+        ChessPiece other = board.getPiece(endPosition);
+        return other == null;
     }
 }
