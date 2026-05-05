@@ -1,5 +1,6 @@
 package chess;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -55,6 +56,7 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         ChessPiece myPiece = board.getPiece(myPosition);
+        List<ChessMove> legalMoves = new ArrayList<>();
         switch (myPiece.getPieceType()) {
             case KING:
                 break;
@@ -71,7 +73,7 @@ public class ChessPiece {
             case null, default:
                 break;
         }
-        return List.of();
+        return legalMoves;
     }
 
     @Override
