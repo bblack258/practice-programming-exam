@@ -59,6 +59,7 @@ public class ChessPiece {
         List<ChessMove> legalMoves = new ArrayList<>();
         switch (myPiece.getPieceType()) {
             case KING:
+                new KingMoveCalc(myPosition,board,legalMoves).moveKing();
                 break;
             case QUEEN:
                 new QueenMoveCalc(myPosition, board, legalMoves).moveQueen();
