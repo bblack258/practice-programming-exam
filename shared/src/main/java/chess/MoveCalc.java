@@ -1,8 +1,6 @@
-package passoff.chess;
+package chess;
 
 import java.util.List;
-
-import chess.*;
 
 /**
  * Parent class for finding allowed moves given a piece and position, checking for blocking and taking
