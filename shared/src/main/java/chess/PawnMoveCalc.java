@@ -2,6 +2,10 @@ package chess;
 
 import java.util.List;
 
+/**
+ * Child class to extend MoveCalc for Pawns
+ */
+
 public class PawnMoveCalc extends MoveCalc {
     public PawnMoveCalc(ChessPosition startPosition, ChessBoard board, List<ChessMove> legalMoves) {
         super(startPosition, board, legalMoves);

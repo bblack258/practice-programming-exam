@@ -2,6 +2,10 @@ package chess;
 
 import java.util.List;
 
+/**
+ * Child class to extend MoveCalc for Knights
+ */
+
 public class KnightMoveCalc extends MoveCalc {
     public KnightMoveCalc(ChessPosition startPosition, ChessBoard board, List<ChessMove> legalMoves) {
         super(startPosition, board, legalMoves);

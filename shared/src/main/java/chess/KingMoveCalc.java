@@ -2,11 +2,18 @@ package chess;
 
 import java.util.List;
 
+/**
+ * Child class to extend MoveCalc for Kings
+ */
+
 public class KingMoveCalc extends MoveCalc {
     public KingMoveCalc(ChessPosition startPosition, ChessBoard board, List<ChessMove> legalMoves) {
         super(startPosition, board, legalMoves);
     }
 
+    /**
+     * Add valid moves for kings, not including rules about check, checkmate, and castling
+     */
     public void moveKing() {
         if (startPosition.getRow() + 1 <= 8 && notBlocked(new ChessPosition(startPosition.getRow() + 1,
                 startPosition.getColumn()))) {
